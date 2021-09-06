@@ -5,13 +5,6 @@ using System.Threading.Tasks;
 
 namespace tp02_taller.Entities
 {
-    public enum puestos
-    {
-        vendedor,
-        cajero,
-        encargado,
-        chofer
-    }
     public class Employee
     {
         //datos que el usuario debe ingresar por teclado
@@ -54,19 +47,53 @@ namespace tp02_taller.Entities
             this.Antiquity = (DateTime.Today.AddTicks(-entryCompany.Ticks).Year - 1).ToString();
             this.Age = (DateTime.Today.AddTicks(-birthday.Ticks).Year - 1).ToString();
 
-            this.Salary = CalculateSalary(Job);
+            this.Salary = CalculateSalary(Job,Antiquity);
         }
         
-        public string CalculateSalary(string job)
+        public string CalculateSalary(string job,string seniority)
         {
             int basic;
+            float sal=0;
+            
+
             switch (Job)
             {
+                case "encargado":
+                    basic = 60000;
+                    sal = fn(basic, seniority);
+                    
+                    break;
+
                 case "vendedor":
                     basic = 50000;
+                    sal = fn(basic,seniority);
+                    break;
+
+                case "cajero":
+                    basic = 40000;
+                    sal = fn(basic, seniority);
+                    break;
+
+                case "chofer":
+                    basic = 30000;
+                    sal = fn(basic, seniority);
+                    break;
             }
+            return sal.ToString();
         }
 
+        public float fn(int s, string ant)
+        {
+            int v = Convert.ToInt32(ant);
+            if (1 <= v && v < 20)
+            {
+                return (float)(s + s * v / 100 - s * 0.15);
+            }
+            else
+            {
+                return (float)(s + s * 0.25 - s * 0.15);
+            }
+        }
     }
 
     

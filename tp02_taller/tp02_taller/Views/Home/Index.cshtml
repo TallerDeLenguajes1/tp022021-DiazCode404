@@ -3,6 +3,26 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">problema 1</h1>
+    <form asp-action="problema01" asp-controller="Home" method="post">
+        <label for="name">Nombre: <input id="name" name="name" type="text" /></label>
+        <label for="lastname">Apellido: <input id="lastname" name="lastname" type="text" /></label><br />
+
+        <label for="dni">DNI: <input id="dni" name="dni" type="number" /></label>
+        <label for="adress">Direccion: <input id="adress" name="adress" type="text" /></label><br />
+
+        <label for="birthday">Direccion: <input id="birthday" name="birthday" type="date" /></label><br />
+
+        <label for="job">Puesto de Trabajo:</label>
+        <select id="jod" name="job">
+            <option value="vendedor">Vendedor</option>
+            <option value="cajero">Cajero</option>
+            <option value="encargado">Encargado</option>
+            <option value="chofer">Chofer</option>
+        </select>
+
+        <label for="entry">Fecha de ingreso: <input id="entry" name="entry" type="date" /></label><br />
+
+        <input type="submit" name="btnEnviar" value="Enviar" />
+    </form>
 </div>
